@@ -1,0 +1,28 @@
+<div style="margin-right: -30%;">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Full Name</th>
+          <th scope="col">E-mail Address</th>
+          <th scope="col">Mobile Number</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">City & Pincode</th>
+          <th scope="col">State</th>
+          <th scope="col" colspan="2">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{ fname }} {{ lname }}</td>
+          <td>{{ email }}</td>
+          <td>{{ mobile }}</td>
+          <td>{{ dob | date }}</td>
+          <td>{{city}} ({{pincode}})</td>
+          <td>{{state}}</td>
+          <td>
+            <button (click)= "edituser(id)">Edit</button>
+          </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

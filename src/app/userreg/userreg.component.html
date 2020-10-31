@@ -1,0 +1,98 @@
+<form [formGroup]= "userForm" (ngSubmit) ="createUser()">
+    <fieldset>
+      <legend>User's Registration Form</legend>
+      <div class="form-group">
+        <label for="exampleInputEmail1">First Name</label>
+        <input type="text" class="form-control" formControlName="fname" aria-describedby="emailHelp" placeholder="Enter First Name">
+        <ul class="text-danger" *ngIf="!userForm.get('fname').valid && userForm.get('fname').touched">
+          <li>Must not contain any special characters</li>
+          <li>Must not contain any numbers and space</li>
+          <li>Must be at least 3 characters but no more than 10</li>    
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Last Name</label>
+        <input type="text" class="form-control" formControlName="lname" aria-describedby="emailHelp" placeholder="Enter Last Name">
+        <ul class="text-danger" *ngIf="!userForm.get('lname').valid && userForm.get('lname').touched">
+          <li>Must not contain any special characters</li>
+          <li>Must not contain any numbers and space</li>
+          <li>Must be at least 3 characters but no more than 10</li>  
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Mobile Number</label>
+        <input type="text" class="form-control" formControlName="mobile" aria-describedby="emailHelp" placeholder="Enter mobile number">
+        <ul class="text-danger" *ngIf="!userForm.get('mobile').valid && userForm.get('mobile').touched">
+          <li>Must not contain any special characters or spaces</li>
+          <li>Must be at least 10 digits</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
+        <ul class="text-danger" *ngIf="!userForm.get('email').valid && userForm.get('email').touched">
+          <li>Must contain "@", Ex. xyz123@abc.com</li>
+          <li>Must not contain any special characters</li>
+          <li>Must be at least 3 characters but no more than 40</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Date of Birth</label>
+        <input type="date" class="form-control" formControlName="dob" aria-describedby="emailHelp" placeholder="Enter date of birth">
+        <span class="text-danger" *ngIf="!userForm.get('dob').valid && userForm.get('dob').touched">fill the date</span>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">City</label>
+        <input type="text" class="form-control" formControlName="city" aria-describedby="emailHelp" placeholder="Enter city">
+        <ul class="text-danger" *ngIf="!userForm.get('city').valid && userForm.get('city').touched">
+          <li>Must not contain any special characters</li>
+          <li>Must not contain any numbers and space</li>
+          <li>Must be at least 3 characters but no more than 20</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">PinCode</label>
+        <input type="text" class="form-control" formControlName="pincode" aria-describedby="emailHelp" placeholder="Enter pincode">
+        <ul class="text-danger" *ngIf="!userForm.get('pincode').valid && userForm.get('pincode').touched">
+          <li>Must not contain any special characters, Ex.123456</li>
+          <li>Allow only Indian pin-code</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">State</label>
+        <input type="text" class="form-control" formControlName="state" aria-describedby="emailHelp" placeholder="Enter State">
+        <ul class="text-danger" *ngIf="!userForm.get('state').valid && userForm.get('state').touched">
+          <li>Must not contain any special characters</li>
+          <li>Must not contain any numbers and space</li>
+          <li>Must be at least 3 characters but no more than 10</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" formControlName="password" placeholder="Enter Password">
+        <ul class="text-danger" *ngIf="!userForm.get('password').valid && userForm.get('password').touched">
+          <li>Must contain at least one upper case letter</li>
+          <li>Must contain at least one lower case letter</li>
+          <li>Must contain at least one number</li>
+          <li>Must contain at least one special character</li>
+          <li>Must contain at least 8 characters but no more than 35</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Confirm Password</label>
+        <input type="password" class="form-control" formControlName="confirmpassword" placeholder="Enter Confirm Password">
+        <div class="text-danger" *ngIf="!userForm.get('confirmpassword').valid && userForm.get('confirmpassword').touched">
+          <div *ngIf="userForm.get('confirmpassword').errors.required">fill the Password</div>
+          <div *ngIf="userForm.get('confirmpassword').errors.confirmedValidator">Password and Confirm Password must be match</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled] ="!userForm.valid">Submit</button>&nbsp;
+      <button type="button" class="btn btn-primary" (click)= "resetForm()">Reset</button>
+    </fieldset>
+</form>
+<br>
+<div>
+  <p>
+    <ngb-alert type="{{type}}" [dismissible]="false">{{msg}}</ngb-alert>
+  </p>
+</div>

@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">E-mail Address</th>
+      <th scope="col">Mobile Number</th>
+      <th scope="col">Date of Birth</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of userData; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ user.fname }} {{ user.lname }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.mobile }}</td>
+      <td>{{ user.dob | date }}</td>
+    </tr>
+    </tbody>
+  </table>
